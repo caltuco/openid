@@ -13,12 +13,13 @@ jobs:
 
    env:
      AWS_DEFAULT_REGION: us-east-1
+     AWS_ID: ${{secrets.AWS_ID}}
 
    steps:
    - name: configureawscredentials
      uses: aws-actions/configure-aws-credentials@v1
      with:
-       role-to-assume: arn:aws:iam::${{ secrets.AWS_ID }}:role/github-openid-role
+       role-to-assume: arn:aws:iam::${{env.AWS_ID}}:role/github-openid-role
        role-session-name: session1 
        aws-region: ${{env.AWS_DEFAULT_REGION}}
 
